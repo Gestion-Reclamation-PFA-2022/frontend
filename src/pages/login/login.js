@@ -48,7 +48,10 @@ const Login = () => {
         onClick={() => {
           loginFunction();
         }}
-      ></button>
+      >
+        {" "}
+        login
+      </button>
     </div>
   );
 };
