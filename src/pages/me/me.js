@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const MyProfile = () => {
+const Me = () => {
   const [myReclamations, setMyReclamations] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -14,10 +16,9 @@ const MyProfile = () => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        navigate("/login/user");
       });
   }, []);
-
-  const listReclamations = () => {};
 
   return (
     <div>
@@ -26,4 +27,4 @@ const MyProfile = () => {
   );
 };
 
-export default MyProfile;
+export default Me;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
@@ -6,11 +7,12 @@ const Signup = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { role } = useParams();
 
   const signupFunction = () => {
     axios
       .post(
-        "http://localhost:3001/api/:role/signup",
+        "http://localhost:3001/api/" + role + "/signup",
         {
           email: email,
           password: password,
@@ -68,7 +70,9 @@ const Signup = () => {
         onClick={() => {
           signupFunction();
         }}
-      ></button>
+      >
+        Signup
+      </button>
     </div>
   );
 };
