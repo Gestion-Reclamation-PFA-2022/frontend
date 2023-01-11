@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
@@ -8,6 +8,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { role } = useParams();
+  const navigate = useNavigate();
 
   const signupFunction = () => {
     axios
@@ -25,9 +26,11 @@ const Signup = () => {
       )
       .then(() => {
         console.log("signup In successfully");
+        navigate("/login/user");
       })
       .catch((err) => {
         console.log(err.response.data);
+        navigate("/signup/user");
       });
   };
 

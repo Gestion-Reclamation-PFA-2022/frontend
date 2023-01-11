@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { role } = useParams();
+  const navigate = useNavigate();
 
   const loginFunction = () => {
     axios
@@ -21,9 +22,11 @@ const Login = () => {
       )
       .then(() => {
         console.log("logged In successfully");
+        navigate("/me");
       })
       .catch((err) => {
         console.log(err.response.data);
+        navigate("/login/user");
       });
   };
 
