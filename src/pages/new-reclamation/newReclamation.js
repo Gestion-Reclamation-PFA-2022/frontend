@@ -26,7 +26,7 @@ const NewReclamation = () => {
   const createNewReclamation = () => {
     axios
       .post(
-        "/api/user/me/new-reclamation",
+        "http://localhost:3001/api/user/me/new-reclamation",
         {
           subject: subject,
           description: description,
