@@ -37,19 +37,6 @@ const Login = () => {
       });
   };
 
-  const logout = () => {
-    axios
-      .post("http://localhost:3001/api/user/logout", {
-        withCredentials: true,
-      })
-      .then(() => {
-        navigate("/login/user");
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  };
-
   return (
     <div>
       <div>

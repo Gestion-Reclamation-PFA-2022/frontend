@@ -50,6 +50,19 @@ const NewReclamation = () => {
       });
   };
 
+  const logout = () => {
+    axios
+      .post("http://localhost:3001/api/user/logout", {
+        withCredentials: true,
+      })
+      .then(() => {
+        navigate("/login/user");
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
+
   return (
     <div>
       <div>
@@ -82,7 +95,7 @@ const NewReclamation = () => {
             bg="white"
             right="80px"
           >
-            <BreadcrumbLink color="#1C3879" href="/docs">
+            <BreadcrumbLink color="#1C3879" href="/login/user" onClick={logout}>
               logout
             </BreadcrumbLink>
           </BreadcrumbItem>
