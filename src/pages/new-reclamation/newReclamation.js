@@ -1,6 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Box } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
 
 const NewReclamation = () => {
   const [subject, setSubject] = useState("");
@@ -37,7 +43,7 @@ const NewReclamation = () => {
         }
       )
       .then(() => {
-        console.log("reclamation created");
+        navigate("/me");
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -46,39 +52,98 @@ const NewReclamation = () => {
 
   return (
     <div>
-      <h1>create new reclamation</h1>
-      <input
-        name="subject"
-        type="text"
-        placeholder="subject"
-        onChange={(event) => {
-          setSubject(event.target.value);
-        }}
-      ></input>
-      <input
-        name="description"
-        type="text"
-        placeholder="description"
-        onChange={(event) => {
-          setDescription(event.target.value);
-        }}
-      ></input>
-      <input
-        name="date"
-        type="date"
-        placeholder="date"
-        onChange={(event) => {
-          setDate(event.target.value);
-        }}
-      ></input>
-      <button
-        onClick={() => {
-          createNewReclamation();
-        }}
-      >
-        {" "}
-        create
-      </button>
+      <div>
+        <Breadcrumb
+          w="100%"
+          h="70px"
+          bgGradient="linear(to-l, #1C3879, #AFB4FF)"
+          spacing="2px"
+          separator=""
+        >
+          <BreadcrumbItem
+            pos="absolute"
+            mt="60px"
+            mr="10px"
+            borderRadius="5px"
+            p="10px"
+            bg="white"
+            right="180px"
+          >
+            <BreadcrumbLink color="#1C3879" href="/me">
+              Mes Reclamations
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            pos="absolute"
+            mt="60px"
+            mr="20px"
+            borderRadius="5px"
+            p="10px"
+            bg="white"
+            right="80px"
+          >
+            <BreadcrumbLink color="#1C3879" href="/docs">
+              logout
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+        <Box
+          mt="25px"
+          mb="25px"
+          pos="relative"
+          left="25%"
+          bg="white"
+          color="#1C3879"
+          width="50%"
+          h="100px"
+        >
+          <Text fontSize="42px" p="12px">
+            Nouvelle Reclamation
+          </Text>
+        </Box>
+      </div>
+      <center>
+        <Stack spacing={3} width="35%">
+          <Input
+            name="subject"
+            type="text"
+            placeholder="subject"
+            onChange={(event) => {
+              setSubject(event.target.value);
+            }}
+          />{" "}
+          <br></br>
+          <Input
+            name="description"
+            type="text"
+            placeholder="description"
+            onChange={(event) => {
+              setDescription(event.target.value);
+            }}
+          />{" "}
+          <br></br>
+          <Input
+            name="date"
+            type="date"
+            placeholder="date"
+            onChange={(event) => {
+              setDate(event.target.value);
+            }}
+          />{" "}
+          <br></br>
+          <Button
+            color="#1C3879"
+            colorScheme="#1C3879"
+            variant="outline"
+            onClick={() => {
+              createNewReclamation();
+            }}
+            type="submit"
+          >
+            create
+          </Button>
+        </Stack>
+      </center>
     </div>
   );
 };
