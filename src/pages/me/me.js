@@ -11,8 +11,9 @@ const Me = () => {
       .get("http://localhost:3001/api/user/me", {
         withCredentials: true,
       })
-      .then(() => {
+      .then((res) => {
         console.log("welcome");
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err.response.data);
