@@ -54,6 +54,19 @@ const Me = () => {
       });
   };
 
+  const deleteOne = (id) => {
+    axios
+      .post("http://localhost:3001/api/user/me/delete/" + id, {
+        withCredentials: true,
+      })
+      .then(() => {
+        navigate("/me");
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
+
   return (
     <div>
       <div>
@@ -131,7 +144,7 @@ const Me = () => {
                       {" "}
                       <button
                         onClick={() => {
-                          //deleteButton(val.code)
+                          deleteOne(val.id);
                         }}
                       >
                         delete

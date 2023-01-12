@@ -12,6 +12,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [msg, setMsg] = useState("");
   const [password, setPassword] = useState("");
   const { role } = useParams();
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const Signup = () => {
       .catch((err) => {
         err.response.data.reason === "role undefined"
           ? navigate("/signup/user")
-          : console.log(err.response.data.reason);
+          : setMsg(err.response.data.reason);
       });
   };
 
@@ -145,6 +146,9 @@ const Signup = () => {
         </Stack>
         <br></br>
         <a href="/login/user">j'ai deja un compte !</a>
+        <Text fontSize="15px" p="12px" style={{ color: "red" }}>
+          {msg}
+        </Text>
       </center>
     </div>
   );

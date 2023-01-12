@@ -11,6 +11,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
 const NewReclamation = () => {
   const [subject, setSubject] = useState("");
   const [description, setDescription] = useState("");
+  const [msg, setMsg] = useState("");
   const [date, setDate] = useState("");
   const navigate = useNavigate();
 
@@ -46,7 +47,7 @@ const NewReclamation = () => {
         navigate("/me");
       })
       .catch((err) => {
-        console.log(err.response.data);
+        setMsg(err.response.data.reason);
       });
   };
 
@@ -156,6 +157,9 @@ const NewReclamation = () => {
             create
           </Button>
         </Stack>
+        <Text fontSize="15px" p="12px" style={{ color: "red" }}>
+          {msg}
+        </Text>
       </center>
     </div>
   );

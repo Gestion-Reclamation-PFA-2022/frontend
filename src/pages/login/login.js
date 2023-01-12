@@ -12,6 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { role } = useParams();
+  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
   const loginFunction = () => {
@@ -33,7 +34,7 @@ const Login = () => {
       .catch((err) => {
         err.response.data.reason === "role undefined"
           ? navigate("/login/user")
-          : console.log(err.response.data.reason);
+          : setMsg(err.response.data.reason);
       });
   };
 
@@ -123,6 +124,9 @@ const Login = () => {
             Login
           </Button>
         </Stack>
+        <Text fontSize="15px" p="12px" style={{ color: "red" }}>
+          {msg}
+        </Text>
       </center>
     </div>
   );
