@@ -43,9 +43,13 @@ const Me = () => {
 
   const logout = () => {
     axios
-      .post("http://localhost:3001/api/user/logout", {
-        withCredentials: true,
-      })
+      .post(
+        "http://localhost:3001/api/user/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      )
       .then(() => {
         navigate("/login/user");
       })
@@ -56,11 +60,16 @@ const Me = () => {
 
   const deleteOne = (id) => {
     axios
-      .post("http://localhost:3001/api/user/me/delete/" + id, {
-        withCredentials: true,
-      })
+      .post(
+        "http://localhost:3001/api/user/me/delete/" + id,
+        {},
+        {
+          withCredentials: true,
+        }
+      )
       .then(() => {
         navigate("/me");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err.response.data);

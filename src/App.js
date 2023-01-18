@@ -7,6 +7,7 @@ import NewReclamation from "./pages/new-reclamation/newReclamation";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
+import EditReclamation from "./pages/update-reclamation/updateReclamtion";
 
 function App() {
   return (
@@ -19,6 +20,11 @@ function App() {
             <Route exact path="/signup/:role" element={<Signup />}></Route>
             <Route exact path="/me" element={<Me />}></Route>
             <Route exact path="/admin/me" element={<PendingManagers />}></Route>
+            <Route
+              exact
+              path="/me/edit/:id"
+              element={<EditReclamation />}
+            ></Route>
             <Route
               exact
               path="/me/new-reclamation"
