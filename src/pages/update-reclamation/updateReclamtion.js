@@ -112,7 +112,7 @@ const EditReclamation = () => {
           h="100px"
         >
           <Text fontSize="42px" p="12px">
-            Nouvelle Reclamation
+            edit Reclamation
           </Text>
         </Box>
       </div>

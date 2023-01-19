@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Box } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -138,6 +139,7 @@ const Me = () => {
                 <Th color="#1C3879"> Subject </Th>
                 <Th color="#1C3879"> Description </Th>
                 <Th color="#1C3879"> Date </Th>
+                <Th color="#1C3879"> Edit </Th>
                 <Th color="#1C3879"> Suprimer </Th>
               </Tr>
             </Thead>
@@ -149,6 +151,16 @@ const Me = () => {
                     <Td> {val.subject}</Td>
                     <Td> {val.description}</Td>
                     <Td> {val.date}</Td>
+                    <Td>
+                      {" "}
+                      <Link
+                        to={{
+                          pathname: "/me/edit/" + val.id,
+                        }}
+                      >
+                        edit
+                      </Link>
+                    </Td>
                     <Td>
                       {" "}
                       <button

@@ -4,7 +4,7 @@ import axios from "axios";
 import { Box } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { Stack } from "@chakra-ui/react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
 
@@ -52,6 +52,19 @@ const Signup = () => {
           spacing="2px"
           separator=""
         >
+          <BreadcrumbItem
+            pos="absolute"
+            mt="60px"
+            mr="20px"
+            borderRadius="5px"
+            p="10px"
+            bg="white"
+            right="360px"
+          >
+            <BreadcrumbLink color="#1C3879" href="/signup/manager">
+              signup as manager
+            </BreadcrumbLink>
+          </BreadcrumbItem>
           <BreadcrumbItem
             pos="absolute"
             mt="60px"
